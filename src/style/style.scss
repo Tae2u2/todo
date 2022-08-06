@@ -6,9 +6,9 @@
     align-items: center;
 };
 
-@mixin flex-between(){
+@mixin flex-justify($justify : space-evenly){
     display: flex;
-    justify-content: space-between;
+    justify-content: $justify;
 };
 @mixin border-line(){
     border: 2px solid #000;
@@ -36,13 +36,181 @@ $main-color: #F9fbe7;
     padding: 0px;
     box-sizing: border-box;
 }
-.app{
+.App{
     width: 100%;
     height: 100vh;
-}
+    overflow-x: hidden;
+    background-color: #ffd20bf8;
+    @include for-center-line();
 
+}
 
 .todo-container{
     @include for-center-line();
     flex-direction: column;
+    background-color: #fff;
+    border-radius: 20px;
+    padding-top: 50px;
+    height: fit-content;
+    h1{
+        padding: 20px 0;
+        letter-spacing: -2px;
+        font-family: 'Gothic A1', sans-serif;
+    }
+    form{
+        margin-left: 10px;
+        margin-bottom: 30px;
+        input{
+            padding: 10px 10px;
+            border: none;
+            outline: none;
+            font-size: 1em;
+            font-family: 'Gothic A1', sans-serif;
+            background-color: transparent;
+            border-bottom: 2px solid #4caf50;
+        }
+        #input-btn{
+            border: 5px double #4caf50;
+            border-radius: 20px;
+            background-color: #fff;
+            color: #398a3c;
+            width: 70px;
+            padding: 5px 10px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        #input-btn:hover{
+            border: 5px double #F1f8e9;
+            background-color: #4caf50;
+            color: #F1f8e9;
+        }
+    }
+    .todo-list-zone{
+        @include for-center-line();
+        form{
+            margin-bottom: 0px;
+        }
+        button{
+            border: 5px double #4caf50;
+            border-radius: 20px;
+            background-color: #fff;
+            color: #398a3c;
+            width: 70px;
+            padding: 5px 10px;
+            margin: 7px;
+            cursor: pointer;
+        }
+        button:hover{
+            border: 5px double #F1f8e9;
+            background-color: #4caf50;
+            color: #F1f8e9;
+        }
+
+        a{
+            margin: 0 10px;
+            text-decoration: none;
+            color: #000;
+            font-family: 'Gothic A1', sans-serif;
+           h4{
+               padding: 5px 20px;
+               transition: 0.4s;
+           } 
+        }
+        a:hover h4{
+            background-color: #6abb6dab;
+        }
+    }
+    .edit-change{
+        flex-direction: column;
+        .btn-line{
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+        }
+    }
+}
+
+#detail-box{
+    @include for-center-line();
+    flex-direction: column;
+    background-color: #F9fbe7;
+    border-radius: 50%;
+    width: 400px;
+    height: 400px;
+    transition: 1s;
+    small{
+        color: #4f4e4e;
+    }
+    h3{
+        font-family: 'Gothic A1', sans-serif;
+        font-size: 1.4em;
+        letter-spacing: -2px;
+        padding: 5px 0;
+    }
+    p{
+        font-family: 'Gothic A1', sans-serif;
+        letter-spacing: -2px;
+        padding: 5px 0;
+    }
+}
+#detail-box:hover{
+    transform:rotate(360deg) ;
+}
+
+.login-container{
+    @include for-center-line();
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: #F1f8e9;
+    border: 8px double #4caf50;
+    padding: 30px;
+    .change-box{
+    @include for-center-line();
+    flex-direction: column;
+
+        h1{
+            font-family: 'Nanum Myeongjo', serif;
+            letter-spacing: -1px;
+            font-size: 3em;
+            padding: 10px 20px;
+            line-height: 85px;
+        }
+        button{
+            padding: 15px 35px;
+            border-radius: 40px;
+            border: 4px dotted #4caf50;
+            background-color: #F1f8e9;
+            color: #398a3c;
+            font-size: 1.1rem;
+            letter-spacing: -2px;
+            margin-bottom: 30px;
+            transition: 0.4s;
+            cursor: pointer;
+        }
+        button:hover{
+            color: #000;
+            transform: translateY(-5px);
+        }
+    }
+    form{
+        input{
+            outline: none;
+            padding: 15px 35px;
+            margin-bottom: 10px;
+            border-radius: 40px;
+            font-size: 1.1rem;
+            border: 2px solid #4caf50;
+        }
+        .login-btn{
+            width: 100%;
+            background-color: #4caf50;
+            color: #F1f8e9;
+            font-weight: 600;
+            letter-spacing: -1px;
+            cursor: pointer;
+        }
+        .login-btn:hover{
+            filter: brightness(1.1);
+        }
+    }
 }

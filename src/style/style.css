@@ -6,9 +6,20 @@
           box-sizing: border-box;
 }
 
-.app {
+.App {
   width: 100%;
   height: 100vh;
+  overflow-x: hidden;
+  background-color: #ffd20bf8;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .todo-container {
@@ -25,5 +36,247 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  background-color: #fff;
+  border-radius: 20px;
+  padding-top: 50px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.todo-container h1 {
+  padding: 20px 0;
+  letter-spacing: -2px;
+  font-family: 'Gothic A1', sans-serif;
+}
+
+.todo-container form {
+  margin-left: 10px;
+  margin-bottom: 30px;
+}
+
+.todo-container form input {
+  padding: 10px 10px;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  font-family: 'Gothic A1', sans-serif;
+  background-color: transparent;
+  border-bottom: 2px solid #4caf50;
+}
+
+.todo-container form #input-btn {
+  border: 5px double #4caf50;
+  border-radius: 20px;
+  background-color: #fff;
+  color: #398a3c;
+  width: 70px;
+  padding: 5px 10px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.todo-container form #input-btn:hover {
+  border: 5px double #F1f8e9;
+  background-color: #4caf50;
+  color: #F1f8e9;
+}
+
+.todo-container .todo-list-zone {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.todo-container .todo-list-zone form {
+  margin-bottom: 0px;
+}
+
+.todo-container .todo-list-zone button {
+  border: 5px double #4caf50;
+  border-radius: 20px;
+  background-color: #fff;
+  color: #398a3c;
+  width: 70px;
+  padding: 5px 10px;
+  margin: 7px;
+  cursor: pointer;
+}
+
+.todo-container .todo-list-zone button:hover {
+  border: 5px double #F1f8e9;
+  background-color: #4caf50;
+  color: #F1f8e9;
+}
+
+.todo-container .todo-list-zone a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #000;
+  font-family: 'Gothic A1', sans-serif;
+}
+
+.todo-container .todo-list-zone a h4 {
+  padding: 5px 20px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.todo-container .todo-list-zone a:hover h4 {
+  background-color: #6abb6dab;
+}
+
+.todo-container .edit-change {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.todo-container .edit-change .btn-line {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 100%;
+}
+
+#detail-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #F9fbe7;
+  border-radius: 50%;
+  width: 400px;
+  height: 400px;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+#detail-box small {
+  color: #4f4e4e;
+}
+
+#detail-box h3 {
+  font-family: 'Gothic A1', sans-serif;
+  font-size: 1.4em;
+  letter-spacing: -2px;
+  padding: 5px 0;
+}
+
+#detail-box p {
+  font-family: 'Gothic A1', sans-serif;
+  letter-spacing: -2px;
+  padding: 5px 0;
+}
+
+#detail-box:hover {
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+}
+
+.login-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-radius: 10px;
+  background-color: #F1f8e9;
+  border: 8px double #4caf50;
+  padding: 30px;
+}
+
+.login-container .change-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.login-container .change-box h1 {
+  font-family: 'Nanum Myeongjo', serif;
+  letter-spacing: -1px;
+  font-size: 3em;
+  padding: 10px 20px;
+  line-height: 85px;
+}
+
+.login-container .change-box button {
+  padding: 15px 35px;
+  border-radius: 40px;
+  border: 4px dotted #4caf50;
+  background-color: #F1f8e9;
+  color: #398a3c;
+  font-size: 1.1rem;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.login-container .change-box button:hover {
+  color: #000;
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+}
+
+.login-container form input {
+  outline: none;
+  padding: 15px 35px;
+  margin-bottom: 10px;
+  border-radius: 40px;
+  font-size: 1.1rem;
+  border: 2px solid #4caf50;
+}
+
+.login-container form .login-btn {
+  width: 100%;
+  background-color: #4caf50;
+  color: #F1f8e9;
+  font-weight: 600;
+  letter-spacing: -1px;
+  cursor: pointer;
+}
+
+.login-container form .login-btn:hover {
+  -webkit-filter: brightness(1.1);
+          filter: brightness(1.1);
 }
 /*# sourceMappingURL=style.css.map */

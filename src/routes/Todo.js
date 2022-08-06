@@ -34,7 +34,7 @@ const Todo = () => {
   }, []);
   return (
     <div className="todo-container">
-      <h1>오늘 일정 : 시원한 수박 먹기</h1>
+      <h1>🍉오늘 일정 : 시원한 수박 먹기🍉</h1>
       <TodoFactory getUserTodos={getUserTodos} />
       {todoList.map((todo, index) => (
         <TodoList

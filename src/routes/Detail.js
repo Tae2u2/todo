@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "../style/style.css";
 
 const Detail = () => {
   const [detailList, setDetailList] = useState(null);
@@ -21,9 +22,9 @@ const Detail = () => {
     getUserId();
   }, []);
   return (
-    <div>
+    <>
       {detailList ? (
-        <div>
+        <div id="detail-box">
           <small>{detailList.createdAt.slice(0, 10)}</small>
           <h3>{detailList.title}</h3>
           <p>{detailList.content}</p>
@@ -31,7 +32,7 @@ const Detail = () => {
       ) : (
         "Loading"
       )}
-    </div>
+    </>
   );
 };
 

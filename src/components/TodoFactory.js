@@ -52,7 +52,7 @@ const TodoFactory = ({ getUserTodos }) => {
         placeholder="상세메모"
         required
       />
-      <input type="submit" value="입력" />
+      <input type="submit" id="input-btn" value="입력" />
     </form>
   );
 };

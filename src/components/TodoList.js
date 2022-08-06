@@ -61,7 +61,9 @@ const TodoList = ({ id, myTitle, myContent, getUserTodos }) => {
   };
 
   return (
-    <div>
+    <div
+      className={usingEdit ? "todo-list-zone edit-change" : "todo-list-zone"}
+    >
       {usingEdit ? (
         <form onSubmit={handleEdit}>
           <input
@@ -81,18 +83,18 @@ const TodoList = ({ id, myTitle, myContent, getUserTodos }) => {
           <button>수정</button>
         </form>
       ) : (
-        <>
-          <Link to={`/${id}`}>
-            <h4>
-              {myTitle} - {myContent}
-            </h4>
-          </Link>
-          <button onClick={handleDelete}>삭제</button>
-        </>
+        <Link to={`/${id}`}>
+          <h4>
+            🍉 {myTitle} - {myContent}
+          </h4>
+        </Link>
       )}
-      <button onClick={() => setUsingEdit(!usingEdit)}>
-        {usingEdit ? "취소" : "수정"}
-      </button>
+      <div className="btn-line">
+        <button onClick={() => setUsingEdit(!usingEdit)}>
+          {usingEdit ? "취소" : "수정"}
+        </button>
+        <button onClick={handleDelete}>삭제</button>
+      </div>
     </div>
   );
 };

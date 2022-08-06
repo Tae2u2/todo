@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "../style/style.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -33,7 +34,6 @@ const Login = () => {
             password,
           }
         );
-        console.log(response.data);
         if (response.status === 200) {
           setCheckBox(true);
           setTimeout(() => {
@@ -47,7 +47,6 @@ const Login = () => {
           email,
           password,
         });
-        console.log(response.data);
         if (response.status === 200) {
           saveToken(response.data.token);
           navigate("/", { replace: true });
@@ -71,17 +70,19 @@ const Login = () => {
     }
   }, []);
   return (
-    <div>
+    <div className="login-container">
       {newAccount ? (
-        <div>
-          <h1>SignUp</h1>
-          <button onClick={() => setNewAccount(false)}>로그인하겠습니다</button>
+        <div className="change-box">
+          <h1>🍉SignUp</h1>
+          <button onClick={() => setNewAccount(false)}>
+            로그인하겠습니다!
+          </button>
         </div>
       ) : (
-        <div>
-          <h1>Login</h1>
+        <div className="change-box">
+          <h1>🍉Login</h1>
           <button onClick={() => setNewAccount(true)}>
-            계정을 생성하고 싶습니다
+            계정을 생성하고 싶다면 클릭!
           </button>
         </div>
       )}
@@ -105,7 +106,11 @@ const Login = () => {
           required
         />
         <br />
-        <input type="submit" value={newAccount ? "계정생성" : "로그인"} />
+        <input
+          className="login-btn"
+          type="submit"
+          value={newAccount ? "계정생성" : "로그인"}
+        />
       </form>
       {checkBox && <h4>회원가입 성공!</h4>}
     </div>
