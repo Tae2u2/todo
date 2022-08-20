@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import TodoApi from "../../api/TodoApi";
-import { CheckStatusNumber } from "../../utils/CheckStatus";
 
-const TodoFactory = () => {
+const TodoFactory = ({getTodos} : {getTodos : any}) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
   const onSubmit = async (event : React.FormEvent) => {
     event.preventDefault();
       const response = await TodoApi.add({title , content})
-      CheckStatusNumber(response , "입력되었습니다.");
-      setTitle("");
-      setContent("");
+      if(response === 200){
+        getTodos();
+        setTitle("");
+        setContent("");
+      }
   };
 
   return (
