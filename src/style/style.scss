@@ -85,6 +85,20 @@ $main-color: #F9fbe7;
             color: #F1f8e9;
         }
     }
+    .edit-container{
+        @include for-center-line();
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        background-color: #7c7c7ca3;
+        .edit-form{
+            background-color: $white;
+            padding: 30px 35px;
+            border-radius: 20px;
+            
+        }
+    }
     .todo-list-zone{
         @include for-center-line();
         form{

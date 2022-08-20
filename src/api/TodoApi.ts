@@ -24,8 +24,8 @@ import { ModifiedTodoState } from "../types/TodoTypes";
 
     update: async ({ modifiedTitle, modifiedContent }: ModifiedTodoState, {id}: TodoIdState) => {
       const { status } = await axiosApi.put(`/todos/${id}`, { 
-        modifiedTitle,
-        modifiedContent,
+        title : modifiedTitle,
+        content : modifiedContent,
      });
      return status;
     },

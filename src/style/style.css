@@ -82,6 +82,29 @@
   color: #F1f8e9;
 }
 
+.todo-container .edit-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  background-color: #7c7c7ca3;
+}
+
+.todo-container .edit-container .edit-form {
+  background-color: #fff;
+  padding: 30px 35px;
+  border-radius: 20px;
+}
+
 .todo-container .todo-list-zone {
   display: -webkit-box;
   display: -ms-flexbox;

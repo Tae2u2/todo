@@ -1,14 +1,9 @@
 import React, {useState} from 'react'
 import { useNavigate } from "react-router-dom";
 import AuthApi from '../../api/AuthApi';
-import { CheckStatusNumber } from '../../utils/CheckStatus';
 import Button from '../Button';
-import { useIsNewAccountStore } from '../../store/store';
 
-const UserForm = () => {
-    const setIsNewAccount = useIsNewAccountStore((state) => state.setisNewAccount);
-    const isNewAccount = useIsNewAccountStore((state)=>state.isNewAccount);
-
+const UserForm = ({isNewAccount , setIsNewAccount} :{isNewAccount : boolean, setIsNewAccount: any}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -16,16 +11,22 @@ const UserForm = () => {
 
     const handleSignUp = async (event : React.FormEvent) => {
         event.preventDefault();
-            const response = await AuthApi.signup({email , password});
-            CheckStatusNumber(response , "계정생성");
-            setIsNewAccount();        
+        const response = await AuthApi.signup({email , password});
+        if(response === 200){
+          setIsNewAccount(!isNewAccount);
+        }      
     };
     
     const handleLogin = async (event : React.FormEvent) => {
         event.preventDefault();
           const response = await AuthApi.login({email , password});
-          CheckStatusNumber(response, "로그인");
+          saveToken(response);
           navigate("/", { replace: true });
+
+    };
+
+    const saveToken = (token : string) => {
+      localStorage.setItem("USER_TOKEN", JSON.stringify(token));
     };
     
   return (
@@ -50,8 +51,8 @@ const UserForm = () => {
         />
         <br />
         {isNewAccount ? 
-        <Button disabled={false} children="계정생성" handleClick={handleSignUp}/>        
-        :<Button disabled={false} children="로그인" handleClick={handleLogin}/>        
+        <Button disabled={false} children="계정생성" handleClick={(e : React.FormEvent) => handleSignUp(e)}/>        
+        :<Button disabled={false} children="로그인" handleClick={(e : React.FormEvent) => handleLogin(e)}/>        
         }
       </form>
   )

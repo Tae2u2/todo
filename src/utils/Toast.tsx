@@ -1,5 +1,5 @@
-import React, { useState, useCallback, useEffect } from 'react'
-import styles from "../style/Toast.module.css";
+import React, { useState, useCallback, useEffect } from 'react';
+import "../style/Toast.css";
 
 export interface ToastState {
     id: number;
@@ -12,7 +12,7 @@ export interface ToastState {
 const Toast = ({statusNumber , title} : { statusNumber : number, title:string }) => {
   const [toastList , setToastList] = useState<ToastState[]>([]);
   let toastProperties  = null;
-  const position = "bottom-right";
+
 
   const deleteToast = useCallback((id : number) => {
     const toastListItem = toastList.filter(e => e.id !== id);
@@ -55,18 +55,18 @@ const Toast = ({statusNumber , title} : { statusNumber : number, title:string })
   },[])
 
   return (
-    <div className={`${styles.container} ${styles[position]}`}>
+    <div className="container bottom-right">
       {
         toastList.map((toast, i) => (
           <div
             key={i}
-            className={`${styles.notification} ${styles.toast} ${styles[position]}`}
+            className="notification toast bottom-right"
             style={{ backgroundColor: toast.backgroundColor }}
           >
             <button onClick={() => deleteToast(toast.id)}>X</button>
             <div>
-              <p className={styles.title}>{toast.title}</p>
-              <p className={styles.description}>{toast.description}</p>
+              <p className="title">{toast.title}</p>
+              <p className="description">{toast.description}</p>
             </div>
           </div>
         ))

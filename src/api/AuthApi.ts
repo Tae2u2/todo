@@ -3,11 +3,11 @@ import { AuthState } from "../types/AuthTypes";
 
 const AuthApi = {
   login: async ({ email, password }: AuthState) => {
-    const { status } = await axiosApi.post("/users/login", {
+    const { data } = await axiosApi.post("/users/login", {
         email,
         password,
     });
-    return status;
+    return data.token;
   },
   signup: async ({ email, password }: AuthState) => {
     const { status } = await axiosApi.post("/users/create", { 
