@@ -1,4 +1,3 @@
-import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import TodoApi from "../../api/TodoApi";
@@ -6,7 +5,7 @@ import { TodoIdState, TodosState } from "../../types/TodoTypes";
 import Button from "../Button";
 import TodoEdit from "./TodoEdit";
 
-const TodoList = ({ todos , getTodos }: {todos: TodosState , getTodos: any}) => {
+const TodoList = ({ todos, getTodos }: {todos: TodosState, getTodos: ()=>Promise<void>}) => {
   const [openEdit , setOpenEdit] = useState(false);
   
   const handleDelete = async (id : TodoIdState["id"]) =>{
@@ -21,10 +20,10 @@ const TodoList = ({ todos , getTodos }: {todos: TodosState , getTodos: any}) => 
 
   return (
     <div className="todo-list-zone">
-      {openEdit && <TodoEdit todos={todos} getTodos={getTodos} setOpenEdit={setOpenEdit}/> }
+      {openEdit && <TodoEdit todos={todos} setOpenEdit={setOpenEdit} getTodos={getTodos}/> }
         <Link to={`/${todos.id}`}>
           <h4>
-            🍉 {todos.title}
+            🍉 {todos.title.slice(0,28)} {todos.title.length >28 && "..."}
           </h4>
         </Link>
       <div className="btn-line">

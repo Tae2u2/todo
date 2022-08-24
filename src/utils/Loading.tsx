@@ -1,8 +1,13 @@
-import React from 'react'
+import "../style/loading.css";
 
 const Loading = () => {
   return (
-    <div>잠시만 기다려주세요</div>
+    <div id='loading-bouncer'>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
   )
 }
 

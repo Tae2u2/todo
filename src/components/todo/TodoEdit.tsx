@@ -3,7 +3,7 @@ import TodoApi from '../../api/TodoApi';
 import { ModifiedTodoState, TodoIdState, TodosState } from '../../types/TodoTypes';
 import Button from '../Button';
 
-const TodoEdit = ({ todos , getTodos , setOpenEdit }: {todos: TodosState, getTodos: any , setOpenEdit: any}) => {
+const TodoEdit = ({ todos , setOpenEdit, getTodos }: {todos: TodosState, setOpenEdit: React.Dispatch<React.SetStateAction<boolean>>, getTodos: ()=>Promise<void>}) => {
     const [modifiedTitle, setModifiedTitle] = useState(todos.title);
     const [modifiedContent, setModifiedContent] = useState(todos.content);
 

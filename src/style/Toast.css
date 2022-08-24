@@ -1,4 +1,7 @@
-.container {
+  .container {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
     font-size: 14px;
     position: fixed;
     z-index: 10;
@@ -25,7 +28,7 @@
   }
   
   .toast {
-    height: 50px;
+    height: 100px;
     width: 365px;
     color: #fff;
     padding: 20px 15px 10px 10px;

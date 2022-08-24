@@ -1,60 +1,78 @@
-import React, {useState} from 'react'
-import { useNavigate } from "react-router-dom";
-import AuthApi from '../../api/AuthApi';
+import React, { useState } from 'react'
+import Toast from '../../utils/Toast';
 import Button from '../Button';
 
-const UserForm = ({isNewAccount , setIsNewAccount} :{isNewAccount : boolean, setIsNewAccount: any}) => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+type MyFormProps = {
+  onSubmit: (form: { email: string; password: string }) => void;
+  isNewAccount : boolean;
+};
 
-    const navigate = useNavigate();
-
-    const handleSignUp = async (event : React.FormEvent) => {
-        event.preventDefault();
-        const response = await AuthApi.signup({email , password});
-        if(response === 200){
-          setIsNewAccount(!isNewAccount);
-        }      
-    };
+const UserForm = ({onSubmit , isNewAccount} :MyFormProps) => {
+    const [showToast , setShowToast] = useState(false);
+    const [form, setForm] = useState({
+      email: '',
+      password: ''
+    });
     
-    const handleLogin = async (event : React.FormEvent) => {
-        event.preventDefault();
-          const response = await AuthApi.login({email , password});
-          saveToken(response);
-          navigate("/", { replace: true });
-
+    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = e.target;
+      setForm({
+        ...form,
+        [name]: value
+      });
     };
 
-    const saveToken = (token : string) => {
-      localStorage.setItem("USER_TOKEN", JSON.stringify(token));
+    const { email, password } = form;
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+
+      if(form.email === "" || form.password === ""){
+        setShowToast(true);
+        setTimeout(() => {
+          setShowToast(false);  
+        }, 2000);
+      }else{
+        onSubmit(form);
+        setForm({
+          email: '',
+          password: ''
+        });
+      }
     };
     
   return (
-    <form >
+    <>
+    <form onSubmit={handleSubmit} >
         <input
           name="email"
           type="email"
-          onChange={(e)=>setEmail(e.target.value)}
           value={email}
+          onChange={onChange}
           placeholder="이메일"
           required
         />
-        <br />
+        { !/\S+@\S+\.\S+/.test(email) ? <small>이메일은 @ , .을 포함해야 합니다</small> : <small>확인되었습니다</small>}
         <input
           name="password"
           type="password"
-          onChange={(e)=>setPassword(e.target. value)}
           value={password}
+          onChange={onChange}
           placeholder="비밀번호"
-          minLength={8}
+          minLength={8}          
           required
         />
-        <br />
+        {password.length < 8 ?
+        <small>비밀번호는 8자 이상이어야 합니다</small> : <small>확인되었습니다</small>
+        }
+
         {isNewAccount ? 
-        <Button disabled={false} children="계정생성" handleClick={(e : React.FormEvent) => handleSignUp(e)}/>        
-        :<Button disabled={false} children="로그인" handleClick={(e : React.FormEvent) => handleLogin(e)}/>        
+        <Button disabled={false} children="계정생성" handleClick={(e : React.FormEvent<HTMLFormElement>) => handleSubmit(e)}/>        
+        :<Button disabled={false} children="로그인" handleClick={(e : React.FormEvent<HTMLFormElement>) => handleSubmit(e)}/>        
         }
       </form>
+      {showToast && <Toast showToast={false} title="이메일과 비밀번호를 확인해주세요" />}
+      </>
   )
 }
 

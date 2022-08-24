@@ -7,14 +7,14 @@ const AuthApi = {
         email,
         password,
     });
-    return data.token;
+    return data;
   },
   signup: async ({ email, password }: AuthState) => {
-    const { status } = await axiosApi.post("/users/create", { 
+    const { data } = await axiosApi.post("/users/create", { 
         email,
         password,
     });
-    return status;
+    return data;
   },
 };
 

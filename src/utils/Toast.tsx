@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import "../style/Toast.css";
 
 export interface ToastState {
@@ -8,8 +8,7 @@ export interface ToastState {
     backgroundColor: string; 
 };
 
-
-const Toast = ({statusNumber , title} : { statusNumber : number, title:string }) => {
+const Toast = ({showToast , title} : { showToast : boolean, title:string }) => {
   const [toastList , setToastList] = useState<ToastState[]>([]);
   let toastProperties  = null;
 
@@ -19,18 +18,18 @@ const Toast = ({statusNumber , title} : { statusNumber : number, title:string })
     setToastList(toastListItem);
   }, [toastList, setToastList]);
 
-  const showToast = (statusNumber: number , title : string) => {
-    if(statusNumber === 200) {
+  const handleToast = (showToast: boolean , title : string) => {
+    if(showToast) {
         toastProperties = {
           id: toastList.length+1,
-          title: `${title} 성공`,
+          title: `${title}`,
           description: 'Thank you! enjoy your todo!',
           backgroundColor: '#5cb85c'
         }
       }else {
         toastProperties = {
           id: toastList.length+1,
-          title: `${title} 실패`,
+          title: `${title}`,
           description: 'Sorry. Please try again.',
           backgroundColor: '#d9534f'
         }
@@ -51,7 +50,7 @@ const Toast = ({statusNumber , title} : { statusNumber : number, title:string })
   }, [toastList, deleteToast]);
 
   useEffect(()=>{
-    showToast(statusNumber , title);
+    handleToast(showToast , title);
   },[])
 
   return (

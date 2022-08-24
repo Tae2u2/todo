@@ -1,16 +1,38 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import TodoFactory from "../components/todo/TodoFactory";
 import TodoList from "../components/todo/TodoList";
-import TodoApi from "../api/TodoApi";
 import { TodosState } from "../types/TodoTypes";
 import { useNavigate } from "react-router-dom";
 import "../style/style.css";
+import TodoApi from "../api/TodoApi";
 
 
 const Todo = () => {
-  const [todos, setTodos] = useState<TodosState[]>([]);
   const navigate = useNavigate();
+  const [todos , setTodos] = useState<TodosState[]>([]);
+  const [showToast , setShowToast] = useState(false);
 
+
+  const onSubmit = async (form : {title:string; content: string}) =>{
+    try{
+     const response = await TodoApi.add(form);
+     if(response === 200){
+      getTodos();
+     }
+    }catch(error){
+      setShowToast(true);
+      setTimeout(() => {
+        setShowToast(false);  
+      }, 2000);
+    }
+  }
+
+
+
+	const getTodos = async () => {
+		const todosResponse = await TodoApi.get();
+		setTodos(todosResponse);
+	}
 
   const handleUserLocation = async () => {
       if(localStorage.getItem("USER_TOKEN")){
@@ -20,11 +42,6 @@ const Todo = () => {
       }
     };
 
-  const getTodos = async () => {
-    const todosResponse = await TodoApi.get();
-    setTodos(todosResponse);
-  }
-
   useEffect(() => {
     handleUserLocation();
     getTodos();
@@ -33,7 +50,7 @@ const Todo = () => {
   return (
     <div className="todo-container">
       <h1>🍉수박 먹기🍉</h1>
-      <TodoFactory getTodos={getTodos}/>
+      <TodoFactory onSubmit={onSubmit}/>
       {todos.map((todo, index) => (
         <TodoList 
           key={index}
@@ -42,6 +59,7 @@ const Todo = () => {
         />
       ))}
     </div>
+
   );
 };
 
