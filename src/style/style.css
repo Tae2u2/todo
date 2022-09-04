@@ -42,6 +42,8 @@
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  max-width: 600px;
+  overflow: hidden;
 }
 
 .todo-container h1 {
@@ -51,7 +53,7 @@
 }
 
 .todo-container form {
-  margin-left: 10px;
+  margin-left: 20px;
   margin-bottom: 30px;
 }
 
@@ -80,6 +82,29 @@
   border: 5px double #F1f8e9;
   background-color: #4caf50;
   color: #F1f8e9;
+}
+
+.todo-container .edit-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  background-color: #7c7c7ca3;
+}
+
+.todo-container .edit-container .edit-form {
+  background-color: #fff;
+  padding: 30px 35px;
+  border-radius: 20px;
 }
 
 .todo-container .todo-list-zone {
@@ -120,12 +145,14 @@
   text-decoration: none;
   color: #000;
   font-family: 'Gothic A1', sans-serif;
+  width: 400px;
 }
 
 .todo-container .todo-list-zone a h4 {
   padding: 5px 20px;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  width: 100%;
 }
 
 .todo-container .todo-list-zone a:hover h4 {
@@ -178,19 +205,23 @@
 #detail-box h3 {
   font-family: 'Gothic A1', sans-serif;
   font-size: 1.4em;
+  width: 300px;
+  overflow-wrap: break-word;
   letter-spacing: -2px;
   padding: 5px 0;
 }
 
 #detail-box p {
   font-family: 'Gothic A1', sans-serif;
+  width: 300px;
+  overflow-wrap: break-word;
   letter-spacing: -2px;
   padding: 5px 0;
 }
 
 #detail-box:hover {
-  -webkit-transform: rotate(360deg);
-          transform: rotate(360deg);
+  -webkit-transform: rotate(5deg);
+          transform: rotate(5deg);
 }
 
 .login-container {
@@ -211,6 +242,7 @@
   background-color: #F1f8e9;
   border: 8px double #4caf50;
   padding: 30px;
+  max-width: 400px;
 }
 
 .login-container .change-box {
@@ -259,6 +291,7 @@
 
 .login-container form input {
   outline: none;
+  width: 100%;
   padding: 15px 35px;
   margin-bottom: 10px;
   border-radius: 40px;
@@ -266,16 +299,30 @@
   border: 2px solid #4caf50;
 }
 
-.login-container form .login-btn {
+.login-container form small {
+  width: 100%;
+  text-align: left;
+  color: orangered;
+  padding-bottom: 15px;
+  margin-left: 20px;
+}
+
+.login-container form .login-button {
   width: 100%;
   background-color: #4caf50;
   color: #F1f8e9;
   font-weight: 600;
+  font-size: 1.1em;
   letter-spacing: -1px;
   cursor: pointer;
+  border-radius: 40px;
+  padding: 15px 20px;
+  margin-top: 10px;
+  outline: none;
+  border: none;
 }
 
-.login-container form .login-btn:hover {
+.login-container form .login-button:hover {
   -webkit-filter: brightness(1.1);
           filter: brightness(1.1);
 }

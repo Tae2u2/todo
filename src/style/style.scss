@@ -52,13 +52,15 @@ $main-color: #F9fbe7;
     border-radius: 20px;
     padding-top: 50px;
     height: fit-content;
+    max-width: 600px;
+    overflow: hidden;
     h1{
         padding: 20px 0;
         letter-spacing: -2px;
         font-family: 'Gothic A1', sans-serif;
     }
     form{
-        margin-left: 10px;
+        margin-left: 20px;
         margin-bottom: 30px;
         input{
             padding: 10px 10px;
@@ -83,6 +85,20 @@ $main-color: #F9fbe7;
             border: 5px double #F1f8e9;
             background-color: #4caf50;
             color: #F1f8e9;
+        }
+    }
+    .edit-container{
+        @include for-center-line();
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        background-color: #7c7c7ca3;
+        .edit-form{
+            background-color: $white;
+            padding: 30px 35px;
+            border-radius: 20px;
+            
         }
     }
     .todo-list-zone{
@@ -111,9 +127,11 @@ $main-color: #F9fbe7;
             text-decoration: none;
             color: #000;
             font-family: 'Gothic A1', sans-serif;
+            width: 400px;
            h4{
                padding: 5px 20px;
                transition: 0.4s;
+               width: 100%;
            } 
         }
         a:hover h4{
@@ -144,17 +162,21 @@ $main-color: #F9fbe7;
     h3{
         font-family: 'Gothic A1', sans-serif;
         font-size: 1.4em;
+        width: 300px;
+        overflow-wrap: break-word;
         letter-spacing: -2px;
         padding: 5px 0;
     }
     p{
         font-family: 'Gothic A1', sans-serif;
+        width: 300px;
+        overflow-wrap: break-word;
         letter-spacing: -2px;
         padding: 5px 0;
     }
 }
 #detail-box:hover{
-    transform:rotate(360deg) ;
+    transform:rotate(5deg) ;
 }
 
 .login-container{
@@ -164,6 +186,7 @@ $main-color: #F9fbe7;
     background-color: #F1f8e9;
     border: 8px double #4caf50;
     padding: 30px;
+    max-width: 400px;
     .change-box{
     @include for-center-line();
     flex-direction: column;
@@ -195,21 +218,35 @@ $main-color: #F9fbe7;
     form{
         input{
             outline: none;
+            width: 100%;
             padding: 15px 35px;
             margin-bottom: 10px;
             border-radius: 40px;
             font-size: 1.1rem;
             border: 2px solid #4caf50;
         }
-        .login-btn{
+        small{
+            width: 100%;
+            text-align: left;
+            color: orangered;
+            padding-bottom: 15px;
+            margin-left: 20px;
+        }
+        .login-button{
             width: 100%;
             background-color: #4caf50;
             color: #F1f8e9;
             font-weight: 600;
+            font-size: 1.1em;
             letter-spacing: -1px;
             cursor: pointer;
+            border-radius: 40px;
+            padding: 15px 20px;
+            margin-top: 10px;
+            outline: none;
+            border: none;
         }
-        .login-btn:hover{
+        .login-button:hover{
             filter: brightness(1.1);
         }
     }

@@ -1,7 +1,6 @@
-import AppRouter from "./Router";
-import "../style/style.css";
+import AppRouter from "../router/Router";
 
-function App() {
+function App () {
   return (
     <div className="App">
       <AppRouter />

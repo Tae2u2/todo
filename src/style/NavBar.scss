@@ -1,0 +1,30 @@
+nav{
+    position: absolute;
+    display: fixed;
+    width: 100%;
+    top: 0;
+    height: fit-content;
+    background-color: #4caf50;
+    ul{
+        display: flex;
+        justify-content: space-between;
+        li{
+            list-style: none;
+            padding: 20px 20px;
+            margin: 10px;
+            color: antiquewhite;
+            font-size: 1.2em;
+            font-weight: 500;
+            letter-spacing: -2px;
+            cursor: pointer;
+            transition: 0.4s;
+            a{
+                text-decoration: none;
+                color: antiquewhite;
+            }
+        }
+        li:hover{
+            background-color: #1e7620;
+        }
+    }
+}
