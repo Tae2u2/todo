@@ -19,3 +19,13 @@ export interface TodosState {
     createdAt : string;
     updatedAt : string;
 }
+
+export interface TodoListState {
+    loading: boolean;
+    data: TodosState[] | null;
+    error: Error | null;
+}
+
+export interface IsOpenedState {
+    isOpened: boolean;
+}

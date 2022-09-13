@@ -5,13 +5,16 @@ import { TodosState } from "../types/TodoTypes";
 import { useNavigate } from "react-router-dom";
 import "../style/style.css";
 import TodoApi from "../api/TodoApi";
+import Toast from "../utils/Toast";
+import useGetTodos from "../hooks/useGetTodos";
+import Loading from "../utils/Loading";
 
 
 const Todo = () => {
   const navigate = useNavigate();
   const [todos , setTodos] = useState<TodosState[]>([]);
   const [showToast , setShowToast] = useState(false);
-
+  const {data , loading , getTodos} = useGetTodos();
 
   const onSubmit = async (form : {title:string; content: string}) =>{
     try{
@@ -27,13 +30,6 @@ const Todo = () => {
     }
   }
 
-
-
-	const getTodos = async () => {
-		const todosResponse = await TodoApi.get();
-		setTodos(todosResponse);
-	}
-
   const handleUserLocation = async () => {
       if(localStorage.getItem("USER_TOKEN")){
         navigate("/", { replace: true });
@@ -42,11 +38,15 @@ const Todo = () => {
       }
     };
 
-  useEffect(() => {
+  useEffect(()=>{
     handleUserLocation();
-    getTodos();
-  },[]);
+    setTodos(data || []);
+  },[])
 
+
+  if (loading) {
+    return <Loading />
+  }
   return (
     <div className="todo-container">
       <h1>🍉수박 먹기🍉</h1>
@@ -55,11 +55,10 @@ const Todo = () => {
         <TodoList 
           key={index}
           todos={todo}
-          getTodos={getTodos}
         />
       ))}
+    {showToast && <Toast showToast={false} title="죄송합니다. 다시 시도해주세요" />}
     </div>
-
   );
 };
 
