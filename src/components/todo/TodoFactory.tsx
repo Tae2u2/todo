@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import TodoApi from "../../api/TodoApi";
+import useInput from "../../hooks/useInput";
 import Toast from "../../utils/Toast";
-
 
 type MyFormProps = {
   onSubmit: (form: { title: string; content: string }) => void;
@@ -9,53 +8,36 @@ type MyFormProps = {
 
 const TodoFactory = ({onSubmit} :MyFormProps) => {
   const [showToast , setShowToast] = useState(false);
-  const [form, setForm] = useState({
-    title: '',
-    content: ''
-  });
-  
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setForm({
-      ...form,
-      [name]: value
-    });
-  };
+  const title = useInput("");
+  const content = useInput("");
 
-  const { title, content} = form;
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if(form.title === "" || form.content === ""){
-      setShowToast(true);
-      setTimeout(() => {
-        setShowToast(false);  
-      }, 2000);
-    }else{
-      onSubmit(form);
-      setForm({
-        title: '',
-        content: ''
-      });
-    }
+    if(typeof title.value === "string" && typeof content.value=== "string"){
+        onSubmit({title: title.value , content:content.value});
+      }else{
+        setShowToast(true);
+        setTimeout(() => {
+          setShowToast(false);  
+        }, 2000);
+      }
   };
+
 
   return (
     <>
     <form onSubmit={handleSubmit}>
       <input
+        {...title}
         name="title"
         type="text"
-        onChange={onChange}
-        value={title}
         placeholder="할 일"
         required
       />
       <input
+        {...content}
         name="content"
         type="text"
-        onChange={onChange}
-        value={content}
         placeholder="상세메모"
         required
       />
