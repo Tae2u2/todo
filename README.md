@@ -1,9 +1,14 @@
-## 원티드 프리온보딩 프론트엔드
+## 🛫원티드 프리온보딩 프론트엔드
 
-<br />
 
-### 참여 : Todo 서비스
+ - Todo앱 구현하기 + 리팩토링
+ - React.js + typescript + recoil + scss
 
+---
+
+### 🖊️Writing
+
+[타입스크립트 적용과정과 코드분리 과정 정리](https://velog.io/@tae2u2/series/TS-%EC%8B%A0%EC%83%9D%EC%95%84-%ED%83%80%EC%9E%85%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EC%A0%81%EC%9A%A9%EA%B8%B0)
 
 <br />
 
